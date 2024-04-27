@@ -58,6 +58,12 @@ public class selenium_utils {
             driver.quit();
         }
     }
+    
+    public static void closeBrowser(WebDriver driver) {
+        if (driver != null) {
+            driver.close();
+        }
+    }
 
     public static void screen_maximize(WebDriver driver) {
         driver.manage().window().maximize();

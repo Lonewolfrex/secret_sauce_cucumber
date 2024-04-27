@@ -4,28 +4,35 @@ import org.openqa.selenium.WebDriver;
 
 import customMethods.selenium_utils;
 import customMethods.webdriver_factory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.homePage;
 import pageObjects.loginPage;
 
-public class LoginStepDefinitions {
-	
+public class LoginStepDefinitions extends BaseStepDefinitions {
+    
     private WebDriver driver;
     private loginPage login_page;
+    private homePage home_page;
     
-    public LoginStepDefinitions() throws Throwable {
-        try {
-        	this.driver = webdriver_factory.createDriver();
-            login_page = new loginPage(driver);
-            new homePage(driver);
-        } catch (Exception e) {
-            e.printStackTrace();
+    @Before
+    public void setUp() throws Throwable {
+        driver = webdriver_factory.createDriver();
+        login_page = new loginPage(driver);
+        home_page = new homePage(driver);
+    }
+    
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            selenium_utils.killDriver(driver);
         }
     }
     
-	@Given("I launch the SauceLabs demo website")
+    @Given("I launch the SauceLabs demo website")
     public void launchWebsite() throws Throwable {
         try {
             driver.get("https://www.saucedemo.com/");
@@ -35,7 +42,7 @@ public class LoginStepDefinitions {
         }
     }
 
-	@When("I enter the username {string} and password {string}")
+    @When("I enter the username {string} and password {string}")
     public void enterCredentials(String username, String password) {
         // Enter the username and password
         try {
@@ -46,7 +53,7 @@ public class LoginStepDefinitions {
         }
     }
 
-	@When("I click on the Login button")
+    @When("I click on the Login button")
     public void clickLoginButton() {
         // Click on the Login button
         try {

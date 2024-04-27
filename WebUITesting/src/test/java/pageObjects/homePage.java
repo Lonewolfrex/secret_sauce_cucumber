@@ -36,7 +36,7 @@ public class homePage {
     public void verifyProductsPage() {
         initializeElements();
         String product_text_title = product_text.getText().toString();
-        selenium_utils.assertText(driver, product_text_title, "Products", 0);
+        selenium_utils.assertText(driver, product_text_title, "Products", 3);
     }
 
     public void sortProducts(String sort_by) {
@@ -57,7 +57,6 @@ public class homePage {
     public void checkSortedProductsByName(String sort_by){
         initializeElements();
         List<String> before_sort_products = getDisplayedProducts(displayed_products);
-        
         sortProducts(sort_by);
         List<String> after_sort_products = getDisplayedProducts(displayed_products);
         if(selenium_utils.compareLists(before_sort_products, after_sort_products) == true) {
@@ -81,8 +80,8 @@ public class homePage {
     
     public void logoutFromApplication() {
     	initializeElements();
-    	selenium_utils.clickElement(driver, burger_icon, 0);
-    	selenium_utils.clickElement(driver, logout_slider_btn, 0);
+    	selenium_utils.clickElement(driver, burger_icon, 5);
+    	selenium_utils.clickElement(driver, logout_slider_btn, 5);
     }
     
 }

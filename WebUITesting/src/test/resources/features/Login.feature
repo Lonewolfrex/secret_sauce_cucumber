@@ -1,11 +1,10 @@
 Feature: Testing SauceLabs Demo Website login feature
-
-  @tag1
   Scenario: Login with valid credentials
     Given I launch the SauceLabs demo website
     When I enter the username "<username>" and password "<password>"
     And I click on the Login button
     Then I should be logged in successfully
+    Then I should be able to log out from the application
     Then I close the browser
 
     Examples:

@@ -4,23 +4,29 @@ import org.openqa.selenium.WebDriver;
 
 import customMethods.selenium_utils;
 import customMethods.webdriver_factory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import pageObjects.homePage;
 import pageObjects.loginPage;
 
-public class HomePageStepDefinitions {
-	
+public class HomePageStepDefinitions extends BaseStepDefinitions {
+    
     private WebDriver driver;
     private homePage home_page;
     private loginPage login_page;
-	
-    public HomePageStepDefinitions() throws Throwable {
-        try {
-        	this.driver = webdriver_factory.createDriver();
-            login_page = new loginPage(driver);
-            home_page = new homePage(driver);
-        } catch (Exception e) {
-            e.printStackTrace();
+    
+    @Before
+    public void setUp() throws Throwable {
+        driver = webdriver_factory.createDriver();
+        login_page = new loginPage(driver);
+        home_page = new homePage(driver);
+    }
+    
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            selenium_utils.killDriver(driver);
         }
     }
     
@@ -42,8 +48,9 @@ public class HomePageStepDefinitions {
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
             throw e;
-        };
+        }
     }
+    
     @Then("I should be able to sort the displayed products by name Z-A")
     public void sortDisplayedProductsByNameInDescendingOrder() {
         try {
@@ -51,8 +58,9 @@ public class HomePageStepDefinitions {
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
             throw e;
-        };
+        }
     }
+    
     @Then("I should be able to sort the displayed products by price low to high")
     public void sortDisplayedProductsByPriceInAscendingOrder() {
         try {
@@ -60,8 +68,9 @@ public class HomePageStepDefinitions {
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
             throw e;
-        };
+        }
     }
+    
     @Then("I should be able to sort the displayed products by price high to low")
     public void sortDisplayedProductsByPriceInDescendingOrder() {
         try {
@@ -69,8 +78,9 @@ public class HomePageStepDefinitions {
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
             throw e;
-        };
+        }
     }
+    
     @Then("I should be able to log out from the application")
     public void logoutFromApplication() {
         try {
@@ -79,8 +89,6 @@ public class HomePageStepDefinitions {
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
             throw e;
-        };    	
-    }
-    
-    
+        }
+    }  
 }

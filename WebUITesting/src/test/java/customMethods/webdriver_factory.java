@@ -31,6 +31,13 @@ public class webdriver_factory {
         }
         return driver;
     }
+    
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null; // Set driver to null after quitting to prevent further usage
+        }
+    }
 }
     
 

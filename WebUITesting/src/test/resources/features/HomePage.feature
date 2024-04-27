@@ -8,6 +8,7 @@ Feature: Testing SauceLabs Demo Website homepage feature
     Then I should be able to sort the displayed products by name Z-A
     Then I should be able to sort the displayed products by price low to high
     Then I should be able to sort the displayed products by price high to low
+    Then I should be able to log out from the application
     Then I close the browser
 
     Examples:

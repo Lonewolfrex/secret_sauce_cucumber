@@ -3,13 +3,13 @@
     <test name="Cucumber Test across chrome" thread-count="3">
 		<parameter name="browser" value="chrome" />
         <classes>
-            <class name="testRunners.ChromeTestRunner"/>
+            <class name="testRunners.TestRunner"/>
         </classes>
     </test>
-<!--    <test name="Cucumber Test across firefox" thread-count="3">
+    <test name="Cucumber Test across firefox" thread-count="3">
 		<parameter name="browser" value="firefox" />
         <classes>
-            <class name="testRunners.FirefoxTestRunner"/>
+            <class name="testRunners.TestRunner"/>
         </classes>
-    </test> -->
+    </test> 
 </suite>

@@ -8,15 +8,15 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import customMethods.config_reader;
 @CucumberOptions(
-	features = {
-//	    		"src/test/resources/features/Login.feature",
-	    		"src/test/resources/features/HomePage.feature"
-	    		},
+    features = {
+    		"src/test/resources/features/HomePage.feature",
+    		"src/test/resources/features/Login.feature",
+    		}, // Path to your feature files
     glue = {"stepDefinitions"},    // Package where your step definitions are located
     plugin = {"pretty", "html:target/cucumber-reports"} // Report generation options (optional)
 )
 
-public class FirefoxTestRunner extends AbstractTestNGCucumberTests {
+public class TestRunner extends AbstractTestNGCucumberTests {
 	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 		return super.scenarios();
