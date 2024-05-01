@@ -10,7 +10,7 @@ import customMethods.config_reader;
 @CucumberOptions(
     features = {
     		"src/test/resources/features/HomePage.feature",
-//    		"src/test/resources/features/Login.feature",
+    		"src/test/resources/features/Login.feature",
     		}, // Path to your feature files
     glue = {"stepDefinitions"},    // Package where your step definitions are located
     plugin = {"pretty", "html:target/cucumber-reports"} // Report generation options (optional)
