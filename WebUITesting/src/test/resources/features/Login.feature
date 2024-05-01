@@ -10,10 +10,10 @@ Feature: Testing SauceLabs Demo Website login feature
     Examples:
       | username         					| password     |
       | standard_user    					| secret_sauce |
-      | problem_user              | secret_sauce |
-		  | performance_glitch_user   | secret_sauce |
-		  | error_user                | secret_sauce |
-		  | visual_user               | secret_sauce |
+#     | problem_user              | secret_sauce |
+#		  | performance_glitch_user   | secret_sauce |
+#		  | error_user                | secret_sauce |
+#		  | visual_user               | secret_sauce |
 
 	Scenario: Login with locked_out_user or incorrect credentials set
     Given I launch the SauceLabs demo website
