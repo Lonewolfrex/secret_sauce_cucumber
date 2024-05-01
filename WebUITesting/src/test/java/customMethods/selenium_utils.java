@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -78,5 +79,9 @@ public class selenium_utils {
 
     public static boolean compareLists(List<String> list1, List<String> list2) {
         return list1.equals(list2);
+    }
+    
+    public static void report_logger(String log_comments) {
+    	Reporter.log(log_comments);
     }
 }

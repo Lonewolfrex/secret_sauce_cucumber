@@ -1,15 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Cucumber Tests cross browser" parallel="false">
+<suite name="Cucumber Tests in chrome" parallel="false">
     <test name="Cucumber Test across chrome">
 		<parameter name="browser" value="chrome" />
         <classes>
             <class name="testRunners.TestRunner"/>
         </classes>
     </test>
-    <test name="Cucumber Test across firefox">
-		<parameter name="browser" value="firefox" />
-        <classes>
-            <class name="testRunners.TestRunner"/>
-        </classes>
-    </test> 
 </suite>

@@ -1,0 +1,7 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cucumber Tests cross browser" parallel="tests">
+    <suite-files>
+        <suite-file path="chrome-suite.xml"/>
+        <suite-file path="firefox-suite.xml"/>
+    </suite-files>
+</suite>

@@ -1,7 +1,7 @@
 package stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
-
+import customMethods.custom_logger;
 import customMethods.selenium_utils;
 import customMethods.webdriver_factory;
 import io.cucumber.java.After;
@@ -30,11 +30,13 @@ public class LoginStepDefinitions extends BaseStepDefinitions {
         if (driver != null) {
             selenium_utils.killDriver(driver);
         }
+        custom_logger.flush();
     }
     
     @Given("I launch the SauceLabs demo website")
     public void launchWebsite() throws Throwable {
         try {
+        	custom_logger.log("Feature File Step:I launch the SauceLabs demo website");
             driver.get("https://www.saucedemo.com/");
         } catch (Exception e) {
             selenium_utils.killDriver(driver);
@@ -44,7 +46,7 @@ public class LoginStepDefinitions extends BaseStepDefinitions {
 
     @When("I enter the username {string} and password {string}")
     public void enterCredentials(String username, String password) {
-        // Enter the username and password
+    	custom_logger.log("Feature File Step:I enter the username "+username+" and password "+password);
         try {
             login_page.enterCredentials(username, password);
         } catch (Exception e) {
@@ -55,7 +57,7 @@ public class LoginStepDefinitions extends BaseStepDefinitions {
 
     @When("I click on the Login button")
     public void clickLoginButton() {
-        // Click on the Login button
+    	custom_logger.log("Feature File Step:I click on the Login button");
         try {
             login_page.clickLoginButton();
         } catch (Exception e) {
@@ -66,7 +68,7 @@ public class LoginStepDefinitions extends BaseStepDefinitions {
 
     @Then("I should view the login error message {string}")
     public void verifyErrorMessage(String errorMessage) {
-        // Verify that an error message is displayed
+    	custom_logger.log("Feature File Step:I should view the login error message "+errorMessage);
         try {
             login_page.verifyErrorMessage(errorMessage);
         } catch (Exception e) {
@@ -77,7 +79,7 @@ public class LoginStepDefinitions extends BaseStepDefinitions {
     
     @Then("I close the browser")
     public void closeBrowser() {
-        // Close the browser
+    	custom_logger.log("Feature File Step:I close the browser");
         selenium_utils.killDriver(driver);
     }
 }

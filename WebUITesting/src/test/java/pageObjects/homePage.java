@@ -3,6 +3,8 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
+
 import customMethods.selenium_utils;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,9 @@ public class homePage {
     private List<WebElement> displayed_products_price;
     private WebElement burger_icon;
     private WebElement logout_slider_btn;
+    private WebElement add_first_product_btn;
+    private WebElement remove_first_product_btn;
+    private List<WebElement> cart_product_count;
 
     // Constructor    
     public homePage(WebDriver driver) {
@@ -29,8 +34,8 @@ public class homePage {
         displayed_products_price = driver.findElements(By.xpath("//div[@class='inventory_item_price']"));
         burger_icon = driver.findElement(By.id("react-burger-menu-btn"));
         logout_slider_btn = driver.findElement(By.id("logout_sidebar_link"));
-        
-    }
+        add_first_product_btn = driver.findElement(By.name("add-to-cart-sauce-labs-backpack"));
+        }
 
     // Verify products page
     public void verifyProductsPage() {
@@ -75,6 +80,36 @@ public class homePage {
             System.out.println("Success: Products are sorted successfully");
         } else {
             System.out.println("Failed: Products are not sorted successfully");
+        }
+    }
+    
+    public void addFirstProductToCart() {
+    	initializeElements();
+    	selenium_utils.clickElement(driver, add_first_product_btn, 3);
+    }
+    
+    public void removeFirstProductFromCart() {
+    	initializeElements();
+    	remove_first_product_btn = driver.findElement(By.id("remove-sauce-labs-backpack"));
+    	selenium_utils.clickElement(driver, remove_first_product_btn, 3);
+    }
+    
+    public void validateProductCountInCart(String expected_count) {
+    	initializeElements();
+        cart_product_count = driver.findElements(By.xpath("//span[@class='shopping_cart_link']//span[@class='shopping_cart_badge']"));
+    	String added_product_count = cart_product_count.get(0).getText().toString();
+    	selenium_utils.assertText(driver, added_product_count, expected_count, 0);
+    }
+    
+    public void validateEmptyCart() {
+    	initializeElements();
+        cart_product_count = driver.findElements(By.xpath("//span[@class='shopping_cart_link']//span[@class='shopping_cart_badge']"));
+        if (cart_product_count.isEmpty()) {
+            System.out.println("Cart is empty now.");
+            Reporter.log("Cart is empty");
+        } else {
+            System.out.println("Failed: Cart is not empty");
+            Reporter.log("Cart is not emptied.");
         }
     }
     
