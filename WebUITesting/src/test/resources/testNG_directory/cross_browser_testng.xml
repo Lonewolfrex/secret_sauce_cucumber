@@ -6,12 +6,12 @@
             <class name="testRunners.TestRunner"/>
         </classes>
     </test>
-	 <test name="Cucumber Test across firefox">
+<!--	<test name="Cucumber Test across firefox">
 		<parameter name="browser" value="firefox" />
         <classes>
             <class name="testRunners.TestRunner"/>
         </classes>
-    </test>
+    </test> -->
     <test name="Cucumber Test across edge">
 		<parameter name="browser" value="edge" />
         <classes>

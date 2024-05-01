@@ -54,7 +54,6 @@ public class homePage {
         List<String> products = new ArrayList<>();
         for (WebElement product : displayed_products) {
             products.add(product.getText().toString());
-            System.out.println(product.getText().toString());
         }
         return products;
     }
